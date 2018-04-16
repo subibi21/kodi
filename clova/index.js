@@ -39,7 +39,7 @@ class CEKRequest {
 
     launchRequest(cekResponse) {
         console.log('launchRequest')
-        cekResponse.appendSpeechText("�ڵ� �����մϴ�.")
+        cekResponse.appendSpeechText("ÄÚµð¸¦ ½ÃÀÛÇÕ´Ï´Ù.")
     }
     intentRequest(cekResponse) {
         console.log('intentRequest')
@@ -73,6 +73,17 @@ class CEKRequest {
     }
 
 }
+const clovaReq = function (httpReq, httpRes, next) {
+    cekResponse = new CEKResponse()
+    cekRequest = new CEKRequest(httpReq)
+    cekRequest.do(cekResponse)
+    console.log(`CEKResponse: ${JSON.stringify(cekResponse)}`)
+    return httpRes.send(cekResponse)
+};
+
+module.exports = clovaReq;
+
+
 
 
 
